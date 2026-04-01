@@ -152,6 +152,41 @@ You: "Review my code for security issues"
 | Gemini advisor fails | Run `gemini` once to authenticate |
 | "Permission denied" on Mac | Run `chmod -R 755 ~/.claude/skills/` |
 
+## Commands
+
+After installation, these commands are available inside Claude Code:
+
+### Core Commands
+
+| Command | What it does |
+|---------|-------------|
+| `/interview [topic]` | Deep interview before starting a project (6 blocks: business, product, technical, security, launch, marketing) |
+| `/dispute [topic]` | Cross-model dispute — Claude + GPT + Gemini debate until consensus |
+| `/planning [task]` | Creates 3 tracking files (plan, findings, progress), eliminates drift |
+| `/simplify` | 3 parallel agents review and clean code |
+| `/cost-estimate` | Estimates project cost at market rates (shows ROI of AI) |
+| `/self-improve` | Audits skills and CLAUDE.md, suggests improvements |
+| `/codex:review` | GPT code review (read-only) |
+| `/codex:adversarial-review` | GPT challenges your implementation decisions |
+| `/codex:rescue` | Delegates a stuck problem to GPT |
+| `/product-data-audit` | Full product ecosystem audit with interactive HTML report |
+
+### Calling Advisors (natural language)
+
+```
+"Ask GPT what it thinks about..."        → GPT advisor
+"Ask Gemini to evaluate this design..."   → Gemini advisor
+"Run a dispute with GPT and Gemini on..." → Full cross-model dispute
+```
+
+### Keyboard Shortcuts
+
+| Shortcut | Action |
+|----------|--------|
+| `Shift+Tab` | Switch modes (Plan / Code / Auto) |
+| `Shift+Up` | Agent progress (Agent Teams) |
+| `@file` | Add file to context |
+
 ## Skills Library
 
 | Category | Skills | Focus |
