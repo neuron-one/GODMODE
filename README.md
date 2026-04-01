@@ -37,43 +37,125 @@ LEVEL 3: External Advisors (GPT + Gemini)
   - Connected via MCP servers
 ```
 
-## Quick Start
+## Installation
 
 ### Prerequisites
-- [Claude Code](https://claude.ai/code) installed and authenticated
-- Node.js 18+
-- (Optional) [Codex CLI](https://github.com/openai/codex) for GPT advisor
-- (Optional) [Gemini CLI](https://github.com/google/gemini-cli) for Gemini advisor
 
-### Installation
+| Requirement | Required | How to get |
+|------------|----------|------------|
+| Claude Code | Yes | [claude.ai/code](https://claude.ai/code) — install CLI or desktop app |
+| Claude subscription | Yes | Pro ($20/mo) or Max ($100-200/mo) |
+| Node.js 18+ | Yes | [nodejs.org](https://nodejs.org/) |
+| Git | Yes | [git-scm.com](https://git-scm.com/) |
+| Codex CLI (GPT) | Optional | For GPT advisor in disputes |
+| Gemini CLI | Optional | For Gemini advisor in disputes |
+
+### Windows Installation
+
+```powershell
+# 1. Clone GODMODE
+git clone https://github.com/neuron-one/GODMODE.git
+cd GODMODE
+
+# 2. Back up your existing config (if any)
+if (Test-Path "$env:USERPROFILE\.claude\CLAUDE.md") {
+    Copy-Item "$env:USERPROFILE\.claude\CLAUDE.md" "$env:USERPROFILE\.claude\CLAUDE.md.backup"
+}
+
+# 3. Copy GODMODE config
+Copy-Item "claude\CLAUDE.md" "$env:USERPROFILE\.claude\CLAUDE.md"
+
+# 4. Copy skills (create dir if needed)
+New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\.claude\skills"
+Copy-Item -Recurse -Force "skills\*" "$env:USERPROFILE\.claude\skills\"
+
+# 5. Copy delegation rules
+New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\.claude\rules\delegator"
+Copy-Item -Force "rules\delegator\*" "$env:USERPROFILE\.claude\rules\delegator\"
+
+# 6. Open Claude Code and install plugins
+# Run these INSIDE Claude Code:
+#   /plugin marketplace add jarrodwatts/claude-delegator
+#   /plugin install claude-delegator@jarrodwatts-claude-delegator
+
+# 7. (Optional) Install GPT advisor
+npm install -g @openai/codex
+# Then in Claude Code:
+#   claude mcp add --transport stdio --scope user codex -- codex -m gpt-5.3-codex mcp-server
+# Authenticate: run `codex login` in terminal
+
+# 8. (Optional) Install Gemini advisor
+npm install -g @google/gemini-cli
+# Run `gemini` once to complete sign-in
+# Then run /claude-delegator:setup in Claude Code to configure MCP
+
+# 9. Restart Claude Code to load everything
+```
+
+### macOS / Linux Installation
 
 ```bash
-# 1. Clone this repo
+# 1. Clone GODMODE
 git clone https://github.com/neuron-one/GODMODE.git
+cd GODMODE
 
-# 2. Copy global config
-cp GODMODE/claude/CLAUDE.md ~/.claude/CLAUDE.md
+# 2. Back up your existing config (if any)
+[ -f ~/.claude/CLAUDE.md ] && cp ~/.claude/CLAUDE.md ~/.claude/CLAUDE.md.backup
 
-# 3. Copy skills
-cp -r GODMODE/skills/* ~/.claude/skills/
+# 3. Copy GODMODE config
+cp claude/CLAUDE.md ~/.claude/CLAUDE.md
 
-# 4. Copy rules
-cp -r GODMODE/rules/* ~/.claude/rules/
+# 4. Copy skills
+mkdir -p ~/.claude/skills
+cp -r skills/* ~/.claude/skills/
 
-# 5. Install plugins (from Claude Code)
-/plugin marketplace add jarrodwatts/claude-delegator
-/plugin install claude-delegator@jarrodwatts-claude-delegator
+# 5. Copy delegation rules
+mkdir -p ~/.claude/rules/delegator
+cp rules/delegator/* ~/.claude/rules/delegator/
 
-# 6. (Optional) Setup GPT advisor
+# 6. Open Claude Code and install plugins
+# Run these INSIDE Claude Code:
+#   /plugin marketplace add jarrodwatts/claude-delegator
+#   /plugin install claude-delegator@jarrodwatts-claude-delegator
+
+# 7. (Optional) Install GPT advisor
 npm install -g @openai/codex
-claude mcp add --transport stdio --scope user codex -- codex mcp-server
+# Then in Claude Code:
+#   claude mcp add --transport stdio --scope user codex -- codex -m gpt-5.3-codex mcp-server
+# Authenticate: run `codex login` in terminal
 
-# 7. (Optional) Setup Gemini advisor
+# 8. (Optional) Install Gemini advisor
 npm install -g @google/gemini-cli
-# Follow setup in docs/GEMINI_SETUP.md
+# Run `gemini` once to complete sign-in
+# Then run /claude-delegator:setup in Claude Code to configure MCP
 
-# 8. Restart Claude Code
+# 9. Restart Claude Code to load everything
 ```
+
+### Verify Installation
+
+After restarting Claude Code, check that everything works:
+
+```
+You: "What skills do you have?"
+→ Claude should list 50+ skills across 11 categories
+
+You: "Run a dispute on Redis vs PostgreSQL for task queues"
+→ Claude should start a cross-model dispute (if GPT/Gemini configured)
+
+You: "Review my code for security issues"
+→ Claude should activate the code-security skill
+```
+
+### Troubleshooting
+
+| Problem | Solution |
+|---------|----------|
+| Skills not showing | Check `~/.claude/skills/` has SKILL.md files |
+| Plugins not working | Run `/reload-plugins` in Claude Code |
+| GPT advisor fails | Run `codex login` in terminal |
+| Gemini advisor fails | Run `gemini` once to authenticate |
+| "Permission denied" on Mac | Run `chmod -R 755 ~/.claude/skills/` |
 
 ## Skills Library
 
@@ -186,6 +268,6 @@ MIT License — use it however you want.
 
 ## Author
 
-Built by [Bogdan](https://github.com/neuron-one) — a non-programmer who builds products with AI.
+Built by [neuron-one](https://github.com/neuron-one) — a solo non-programmer who builds real products entirely with AI. No CS degree. No dev team. Just one person and an AI army.
 
 *GODMODE is not affiliated with Anthropic, OpenAI, or Google.*
