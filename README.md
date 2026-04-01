@@ -22,20 +22,15 @@ Built by a non-programmer using AI. If I can do it, so can you.
 
 ## Architecture
 
-```
-LEVEL 1: Orchestrator (Claude, permanent)
-  - Understands the full picture
-  - Knows all skills
-  - Decides how many agents needed and with which skills
+<p align="center">
+  <img src="docs/architecture.svg" alt="GODMODE Architecture" width="100%"/>
+</p>
 
-LEVEL 2: Dynamic Agents (created per task)
-  - Combination of skills like LEGO blocks
-  - Live until task is complete, then destroyed
+**Level 1 — Orchestrator**: permanent Claude instance that understands the full picture, knows all skills, and decides how many agents are needed.
 
-LEVEL 3: External Advisors (GPT + Gemini)
-  - Not executors — advisors who give second opinions
-  - Connected via MCP servers
-```
+**Level 2 — Dynamic Agents**: created per task from skill combinations like LEGO blocks. Live until task is complete, then destroyed.
+
+**Level 3 — External Advisors**: GPT and Gemini connected via MCP servers. Not executors — advisors who give second opinions and participate in cross-model disputes.
 
 ## Installation
 

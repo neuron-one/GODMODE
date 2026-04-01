@@ -1,0 +1,132 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="900" y2="520">
+      <stop offset="0%" stop-color="#0d1117"/>
+      <stop offset="100%" stop-color="#161b22"/>
+    </linearGradient>
+    <linearGradient id="glow-blue" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#58a6ff"/>
+      <stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+    <linearGradient id="glow-green" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#3fb950"/>
+      <stop offset="100%" stop-color="#2ea043"/>
+    </linearGradient>
+    <linearGradient id="glow-orange" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f0883e"/>
+      <stop offset="100%" stop-color="#db6d28"/>
+    </linearGradient>
+    <filter id="neon">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="neon-soft">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="520" fill="url(#bg)" rx="12"/>
+
+  <!-- Title -->
+  <text x="450" y="42" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="bold" fill="#e6edf3">GODMODE</text>
+  <text x="450" y="66" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#8b949e" letter-spacing="3">POWERED BY NEURON.ONE ARCHITECTURE</text>
+
+  <!-- Connection lines (behind nodes) -->
+  <!-- Orchestrator to Claude -->
+  <line x1="450" y1="160" x2="200" y2="160" stroke="#58a6ff" stroke-width="2" opacity="0.4" filter="url(#neon-soft)"/>
+  <!-- Orchestrator to GPT -->
+  <line x1="450" y1="160" x2="700" y2="120" stroke="#3fb950" stroke-width="2" opacity="0.4" filter="url(#neon-soft)"/>
+  <!-- Orchestrator to Gemini -->
+  <line x1="450" y1="160" x2="700" y2="200" stroke="#f0883e" stroke-width="2" opacity="0.4" filter="url(#neon-soft)"/>
+
+  <!-- Orchestrator to skills -->
+  <line x1="450" y1="200" x2="150" y2="340" stroke="#8b5cf6" stroke-width="1" opacity="0.25"/>
+  <line x1="450" y1="200" x2="300" y2="340" stroke="#8b5cf6" stroke-width="1" opacity="0.25"/>
+  <line x1="450" y1="200" x2="450" y2="340" stroke="#8b5cf6" stroke-width="1" opacity="0.25"/>
+  <line x1="450" y1="200" x2="600" y2="340" stroke="#8b5cf6" stroke-width="1" opacity="0.25"/>
+  <line x1="450" y1="200" x2="750" y2="340" stroke="#8b5cf6" stroke-width="1" opacity="0.25"/>
+
+  <!-- LEVEL 1: Orchestrator (center) -->
+  <rect x="350" y="120" width="200" height="80" rx="16" fill="#161b22" stroke="url(#glow-blue)" stroke-width="2" filter="url(#neon)"/>
+  <text x="450" y="155" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#8b949e">LEVEL 1</text>
+  <text x="450" y="178" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="bold" fill="#e6edf3">Orchestrator</text>
+
+  <!-- LEVEL 2: External Models -->
+  <!-- Claude -->
+  <rect x="100" y="130" width="130" height="60" rx="12" fill="#161b22" stroke="#58a6ff" stroke-width="1.5" filter="url(#neon)"/>
+  <circle cx="130" cy="160" r="8" fill="#58a6ff" opacity="0.3"/>
+  <text x="175" y="156" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#8b949e">Advisor</text>
+  <text x="175" y="174" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="bold" fill="#58a6ff">Claude</text>
+
+  <!-- GPT -->
+  <rect x="640" y="90" width="130" height="60" rx="12" fill="#161b22" stroke="#3fb950" stroke-width="1.5" filter="url(#neon)"/>
+  <circle cx="670" cy="120" r="8" fill="#3fb950" opacity="0.3"/>
+  <text x="715" y="116" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#8b949e">Advisor</text>
+  <text x="715" y="134" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="bold" fill="#3fb950">GPT</text>
+
+  <!-- Gemini -->
+  <rect x="640" y="170" width="130" height="60" rx="12" fill="#161b22" stroke="#f0883e" stroke-width="1.5" filter="url(#neon)"/>
+  <circle cx="670" cy="200" r="8" fill="#f0883e" opacity="0.3"/>
+  <text x="715" y="196" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#8b949e">Advisor</text>
+  <text x="715" y="214" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="bold" fill="#f0883e">Gemini</text>
+
+  <!-- LEVEL 2 label -->
+  <text x="450" y="260" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#484f58">LEVEL 2: Dynamic Agents — created per task from skill combinations</text>
+
+  <!-- Divider -->
+  <line x1="80" y1="285" x2="820" y2="285" stroke="#30363d" stroke-width="1" stroke-dasharray="4"/>
+  <text x="450" y="305" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#484f58">LEVEL 3: Skills Library — 56 skills in 11 categories</text>
+
+  <!-- Skill hexagons row 1 -->
+  <!-- Security -->
+  <rect x="70" y="325" width="130" height="55" rx="10" fill="#1c2128" stroke="#f85149" stroke-width="1" opacity="0.9"/>
+  <text x="135" y="350" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#f85149">&#x1f6e1;</text>
+  <text x="135" y="368" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="600" fill="#e6edf3">Security</text>
+
+  <!-- Development -->
+  <rect x="225" y="325" width="130" height="55" rx="10" fill="#1c2128" stroke="#58a6ff" stroke-width="1" opacity="0.9"/>
+  <text x="290" y="350" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#58a6ff">&#x2699;</text>
+  <text x="290" y="368" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="600" fill="#e6edf3">Development</text>
+
+  <!-- Design -->
+  <rect x="380" y="325" width="130" height="55" rx="10" fill="#1c2128" stroke="#d2a8ff" stroke-width="1" opacity="0.9"/>
+  <text x="445" y="350" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#d2a8ff">&#x1f3a8;</text>
+  <text x="445" y="368" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="600" fill="#e6edf3">Design</text>
+
+  <!-- Infrastructure -->
+  <rect x="535" y="325" width="130" height="55" rx="10" fill="#1c2128" stroke="#3fb950" stroke-width="1" opacity="0.9"/>
+  <text x="600" y="350" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#3fb950">&#x2601;</text>
+  <text x="600" y="368" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="600" fill="#e6edf3">Infrastructure</text>
+
+  <!-- Testing -->
+  <rect x="690" y="325" width="130" height="55" rx="10" fill="#1c2128" stroke="#f0883e" stroke-width="1" opacity="0.9"/>
+  <text x="755" y="350" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#f0883e">&#x2714;</text>
+  <text x="755" y="368" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="600" fill="#e6edf3">Testing</text>
+
+  <!-- Row 2 -->
+  <!-- Data -->
+  <rect x="145" y="400" width="130" height="55" rx="10" fill="#1c2128" stroke="#79c0ff" stroke-width="1" opacity="0.9"/>
+  <text x="210" y="425" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#79c0ff">&#x1f4ca;</text>
+  <text x="210" y="443" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="600" fill="#e6edf3">Data</text>
+
+  <!-- Quality -->
+  <rect x="300" y="400" width="130" height="55" rx="10" fill="#1c2128" stroke="#a5d6ff" stroke-width="1" opacity="0.9"/>
+  <text x="365" y="425" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#a5d6ff">&#x2728;</text>
+  <text x="365" y="443" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="600" fill="#e6edf3">Quality</text>
+
+  <!-- Workflow -->
+  <rect x="455" y="400" width="130" height="55" rx="10" fill="#1c2128" stroke="#d2a8ff" stroke-width="1" opacity="0.9"/>
+  <text x="520" y="425" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#d2a8ff">&#x1f504;</text>
+  <text x="520" y="443" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="600" fill="#e6edf3">Workflow</text>
+
+  <!-- Business -->
+  <rect x="610" y="400" width="130" height="55" rx="10" fill="#1c2128" stroke="#f0883e" stroke-width="1" opacity="0.9"/>
+  <text x="675" y="425" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#f0883e">&#x1f4bc;</text>
+  <text x="675" y="443" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="600" fill="#e6edf3">Business</text>
+
+  <!-- Bottom bar -->
+  <rect x="80" y="480" width="740" height="28" rx="6" fill="#1c2128" opacity="0.6"/>
+  <text x="450" y="499" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#484f58">16 Rules  &#x2022;  56 Skills  &#x2022;  3 AI Models  &#x2022;  Cross-Model Disputes  &#x2022;  Ecomode  &#x2022;  Memory System</text>
+</svg>
